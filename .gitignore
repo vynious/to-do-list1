@@ -1,1 +1,2 @@
-dir_to_ignore/todolist v1/venv
+venv/
+.venv
