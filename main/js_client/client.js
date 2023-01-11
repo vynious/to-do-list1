@@ -31,39 +31,39 @@ function handleCreate(event) {
 }
 
 
-function getNoteList() {
-    const listEndpoint = `${baseEndpoint}/`
-    const options = {
-        method:'GET',
-        headers:{
-            'Content-Type':'application/json',    
-        }
-    }
-    fetch(listEndpoint,options)
-    .then(response=>{
-        return response.json()
-    })
-    .then(data=>{
-        console.log(data)
-        writeToContainer(data)
-    })
-    .catch(err=>{
-        console.log(`${err.message}`)
-    })
-}
-
-// async function getNoteList(){
+// function getNoteList() {
 //     const listEndpoint = `${baseEndpoint}/`
-//     const response = await fetch(listEndpoint,{
+//     const options = {
 //         method:'GET',
 //         headers:{
-//             'Content-Type':'application/json',
-//             'Access-Control-Allow-Headers':'*',
+//             'Content-Type':'application/json',    
 //         }
+//     }
+//     fetch(listEndpoint,options)
+//     .then(response=>{
+//         return response.json()
 //     })
-//     console.log(response.json())
-//     return response.json()
+//     .then(data=>{
+//         console.log(data)
+//         writeToContainer(data)
+//     })
+//     .catch(err=>{
+//         console.log(`${err.message}`)
+//     })
 // }
+
+async function getNoteList(){
+    const listEndpoint = `${baseEndpoint}/`
+    const response = await fetch(listEndpoint,{
+        method:'GET',
+        headers:{
+            'Content-Type':'application/json',
+ 
+        }
+    })
+    const data = await response.json()
+    writeToContainer(data)
+}
 
 function writeToContainer(data) {
     if (contentContainer) {
