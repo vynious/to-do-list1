@@ -1,3 +1,5 @@
 # to-do-list1
 
-backend code created using django rest framework  
+backend api created using django rest framework  
+
+frontend wip.
