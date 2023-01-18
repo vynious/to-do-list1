@@ -1,18 +1,23 @@
 from django.shortcuts import render
 
 # Create your views here.
-from rest_framework import generics, mixins
-from .models import ToDoList
+from rest_framework import generics, mixins, permissions, authentication
+from .models import ToDoList, User
 from .serializers import TDLSerializer
+from django.views.generic.edit import CreateView
+from rest_framework.views import APIView
 
 class TDLListAPIView(generics.ListAPIView):
     queryset = ToDoList.objects.all()
     serializer_class= TDLSerializer
-
+    # authentication_classes = [authentication.SessionAuthentication]
+    # permission_classes = [permissions.IsAuthenticated]
+ 
 class TDLCreateAPIView(generics.CreateAPIView):
     queryset = ToDoList.objects.all()
     serializer_class = TDLSerializer
     def perform_create(self, serializer):
+  
         return super().perform_create(serializer)
 
 class TDLDetailAPIView(generics.RetrieveAPIView):
@@ -32,3 +37,4 @@ class TDLDestroyAPIView(generics.DestroyAPIView):
     lookup_field = 'pk'
     def perform_destroy(self, instance):
         return super().perform_destroy(instance)
+

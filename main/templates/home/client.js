@@ -8,9 +8,11 @@ if (createForm) {
 
 
 function handleCreate(event) {
+    console.log(createForm.dataset)
     event.preventDefault()
     const createEndpoint = `${baseEndpoint}/create/`
-    let createNoteData = new FormData(createForm)
+    let formData = new FormData()
+    let createNoteData =  formData(createForm)
     let createNoteObjectData = Object.fromEntries(createNoteData)
     let bodyStr = JSON.stringify(createNoteObjectData)
     console.log('eee')

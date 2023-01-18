@@ -14,11 +14,11 @@
     <forms id="note-form" method="post">
         <input type='text' name="content" placeholder="type ur note">
         <select id="priority" name="priority" size="3" multiple>
-            <option value="high" name="high">High</option>
-            <option value="mid" name="mid">Mid</option>
-            <option value="low" name="low">Low</option>
+            <option value="high" name="high">H</option>
+            <option value="mid" name="mid">M</option>
+            <option value="low" name="low">L</option>
         </select>
-        <input type="submit" value="create"/>
+        <input type="submit" value="create" onclick="handleCreate(event)"/>
     </forms>
 
     <div id="content-container"></div>

@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'tdl',
+    'tdl', #crud api
+    'user', #user crud api
     'rest_framework',
+    'rest_framework.authtoken',
 
 ]
 
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -149,14 +152,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     'http://127.0.0.1'
 # ]
 
-REST_FRAMEWORK ={
-    'DEFAULT_AUTHENTICATION_CLASSES':[
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES':[
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
-    ],
-    'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.LimitOffsetPagination','PAGE_SIZE':10
-}
+# REST_FRAMEWORK ={
+#     'DEFAULT_AUTHENTICATION_CLASSES':[
+#         'rest_framework.authentication.SessionAuthentication',
+#         'rest_framework.authentication.TokenAuthentication',
+        
+
+#     ],
+#     'DEFAULT_PERMISSION_CLASSES':[
+#         'rest_framework.permissions.IsAuthenticatedOrReadOnly'
+#     ],
+#     'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.LimitOffsetPagination','PAGE_SIZE':10
+# }
+
+AUTH_USER_MODEL = 'user.User'
+CORS_ALLOW_CREDENTIALS= True
